@@ -1,0 +1,70 @@
+version: 2.1
+
+orbs:
+  browser-tools: circleci/browser-tools@1.4.8
+  node: circleci/node@5.2.0
+  ruby: circleci/ruby@2.1.2
+
+executors:
+  default:
+    docker:
+      - image: cimg/ruby:3.3-browsers
+        environment:
+          RAILS_ENV: test
+    resource_class: small
+
+commands:
+  bundle-install:
+    steps:
+      - ruby/install-deps:
+          clean-bundle: true
+          key: gems-v3
+
+jobs:
+  setup:
+    executor: default
+    steps:
+      - checkout
+      - run:
+          name: Install System Dependencies
+          command: sudo apt install libsqlite3-dev
+      - bundle-install
+  rspec:
+    executor: default
+    resource_class: medium
+    steps:
+      - checkout
+      - bundle-install
+      - node/install:
+          install-yarn: true
+          node-version: '16'
+      - node/install-packages:
+          pkg-manager: yarn
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
+      - run: bin/rails db:schema:load --trace
+      - run: bin/webpack
+      - ruby/rspec-test
+      - store_artifacts:
+          path: coverage
+          destination: coverage
+      - store_artifacts:
+          path: tmp/capybara
+          destination: capybara
+  rubocop:
+    executor: default
+    steps:
+      - checkout
+      - bundle-install
+      - ruby/rubocop-check
+
+workflows:
+  build:
+    jobs:
+      - setup
+      - rspec:
+          requires:
+            - setup
+      - rubocop:
+          requires:
+            - setup

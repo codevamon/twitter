@@ -1,0 +1,24 @@
+name: Rails Migration
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  migration:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3
+          bundler-cache: true
+      - name: Migration Test
+        run: |
+          bin/rails db:migrate db:populate db:reset

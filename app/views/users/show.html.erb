@@ -1,0 +1,19 @@
+<% provide(:title, @user.name) %>
+
+<div class="border">
+  <section>
+    <%= render 'shared/user_info' %>
+  </section>
+  <% if @user.tweets.any? %>
+    <div class="timeline">
+      <ol class="tweets">
+        <%= render @tweets %>
+        <div class="my-4">
+          <%= will_paginate @tweets, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+        </div>
+      </ol>
+    </div>
+  <% else %>
+    <p>No post yet</p>
+  <% end %>
+</div>

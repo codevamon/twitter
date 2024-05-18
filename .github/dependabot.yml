@@ -1,0 +1,47 @@
+version: 2
+updates:
+  - package-ecosystem: bundler
+    directory: "/"
+    schedule:
+      interval: daily
+    reviewers:
+      - toshimaru
+    allow:
+      - dependency-type: "all"
+    open-pull-requests-limit: 15
+    groups:
+      debug-gem:
+        patterns:
+          - "debug"
+          - "irb"
+          - "reline"
+      net-gem:
+        patterns:
+          - "net-*"
+      nokogiri:
+        patterns:
+          - "nokogiri"
+          - "mini_portile2"
+      rubocop:
+        patterns:
+          - "rubocop"
+          - "rubocop-*"
+          - "parser"
+          - "language_server-protocol"
+          - "unicode-display_width"
+      rspec:
+        patterns:
+          - "rspec-*"
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: daily
+    reviewers:
+      - toshimaru
+    open-pull-requests-limit: 10
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    reviewers:
+      - toshimaru

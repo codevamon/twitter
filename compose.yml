@@ -1,0 +1,14 @@
+services:
+  web:
+    build: .
+    command: bash -c "bundle && bin/rails s -b '0.0.0.0'"
+    volumes:
+      - .:/app:cached
+      - bundle:/usr/local/bundle:cached
+      - node_modules:/app/node_modules:cached
+      - /app/.git
+    ports:
+      - "3000:3000"
+volumes:
+  bundle:
+  node_modules:

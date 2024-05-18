@@ -1,0 +1,149 @@
+@import "bootstrap";
+@import "bootstrap_custom";
+@import 'variable';
+
+body {
+  min-height: 75rem;
+  padding-top: 3.5rem;
+}
+ul, ol {
+  padding: 0;
+}
+section {
+  background-color: #fff;
+  border-radius: 5px;
+}
+textarea {
+  width: 100%;
+  height: 80px;
+  padding: 8px;
+  border: 1px solid $lightGray;
+  margin-bottom: 8px;
+}
+
+.profile {
+  padding: 15px;
+  border-bottom: 1px solid $lightGray;
+}
+.stats {
+  border-bottom: 1px solid $lightGray;
+  table {
+    th, td {
+      padding-left: 20px;
+    }
+    th {
+      color: $gray;
+      padding-top: 7px;
+    }
+    td {
+      padding-bottom: 5px;
+      font-size: 23px;
+    }
+  }
+}
+.tweet-box {
+  padding: 15px;
+  background-color: rgba(0, 132, 180, 0.1);
+}
+.tweets {
+  list-style: none;
+  margin: 0;
+
+  .tweet {
+    padding: 10px 15px 5px;
+    border-top: 1px solid $lightGray;
+    &:hover {
+      background-color: #F5F8FA;
+    }
+    &:last-child {
+      border-bottom: 1px solid $lightGray;
+    }
+  }
+}
+.content {
+  display: block;
+  margin-left: 63px;
+}
+.tweet-content {
+  img {
+    margin: 8px 0;
+  }
+}
+.tweet-footer {
+  font-size: 13px;
+  color: $gray;
+}
+.gravatar {
+  float: left;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $gray;
+    &:last-child {
+      border-bottom: 1px solid $gray;
+    }
+  }
+}
+.timeline {
+  background-color: #fff;
+  border-radius: 5px;
+}
+.title {
+  font-size: 25px;
+  color: $gray;
+  margin: 0;
+  padding: 10px 15px 0;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+.tweet-actions {
+  float: right;
+}
+.one-col {
+  background-color: #fff;
+  padding: 20px 30px;
+  margin-top: 10px;
+}
+.nav-item {
+  .fa {
+    margin-right: 10px;
+  }
+}
+.container {
+  max-width: 720px;
+}
+
+.alert {
+  ul {
+    list-style: none;
+    margin: 0;
+  }
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 350px;
+  padding: 15px;
+  margin: auto;
+}
+
+.bi {
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  box-sizing: border-box;
+}

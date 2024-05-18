@@ -1,0 +1,15 @@
+<div class="tweet-box">
+  <%= form_with model: current_user.tweets.new do |form| %>
+    <div class="field">
+      <%= form.text_area :content, placeholder: "Compose new Tweet..." %>
+    </div>
+    <div class="btn-toolbar justify-content-between">
+      <div class="btn-group">
+        <%= form.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+      </div>
+      <div class="btn-group">
+        <%= form.submit "Post", class: "btn btn-large btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
